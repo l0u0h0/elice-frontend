@@ -1,0 +1,16 @@
+// styles
+import * as S from "../styles/search/search.style";
+import SearchInputComponent from "../components/search/SearchInputComponent";
+
+const SearchContainer = () => {
+  return (
+    <S.SearchLayout>
+      <div className="title">과목</div>
+      <div className="search-area">
+        <SearchInputComponent />
+      </div>
+    </S.SearchLayout>
+  );
+};
+
+export default SearchContainer;

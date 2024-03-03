@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const HeaderLayout = styled.header`
-  width: 100%;
+  width: transparent;
   height: 4rem;
   padding: 0px 1.5rem;
   background-color: white;
   display: flex;
-  position: fixed;
+  top: 0px;
+  position: sticky;
   z-index: 99;
 `;
 

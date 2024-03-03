@@ -11,6 +11,11 @@ body {
   background-color: rgb(240, 241, 243);
 }
 
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
 img {
   overflow-clip-margin: content-box;
   overflow: clip;

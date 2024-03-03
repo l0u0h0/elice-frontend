@@ -1,6 +1,6 @@
 // React
 import { useCallback, useState } from "react";
-// styles
+// style
 import * as S from "../../styles/search/search.style";
 
 const SearchInputComponent = () => {

@@ -1,5 +1,7 @@
 // styles
+// components
 import FilterComponent from "../components/search/FilterComponent";
+// style
 import * as S from "../styles/search/filter.style";
 
 const FilterConatiner = () => {

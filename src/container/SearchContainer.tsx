@@ -1,4 +1,4 @@
-// styles
+// style
 import * as S from "../styles/search/search.style";
 // components
 import SearchInputComponent from "../components/search/SearchInputComponent";

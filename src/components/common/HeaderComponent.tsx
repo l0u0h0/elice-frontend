@@ -1,4 +1,4 @@
-// styles
+// style
 import * as S from "../../styles/common/header.style";
 
 // TODO: 추후 기타 요소 구현

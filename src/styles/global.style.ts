@@ -25,7 +25,6 @@ img {
 p {
   margin: 0;
 }
-
 `;
 
 export default GlobalStyles;

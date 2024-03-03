@@ -1,5 +1,6 @@
 // style
 import ListCardComponent from "../components/list/ListCardComponent";
+import PaginationComponent from "../components/list/PaginationComponent";
 import * as S from "../styles/list/list.style";
 
 const ListContainer = () => {
@@ -72,6 +73,7 @@ const ListContainer = () => {
           />
         ))}
       </S.ListContainer>
+      <PaginationComponent />
     </S.ListLayout>
   );
 };

@@ -5,6 +5,7 @@ export const SearchLayout = styled.div`
   height: 100%;
   padding: 1.5rem;
   background-color: transparent;
+  vertical-align: initial;
 
   & .title {
     width: 100%;
@@ -27,6 +28,7 @@ export const SearchLayout = styled.div`
 
 export const SearchInputLayout = styled.div<{ $focus: boolean }>`
   width: 100%;
+  margin-bottom: 0.625rem;
   padding: 0.5rem;
   display: flex;
   background-color: white;

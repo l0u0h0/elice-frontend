@@ -1,6 +1,8 @@
 // styles
 import * as S from "../styles/search/search.style";
+// components
 import SearchInputComponent from "../components/search/SearchInputComponent";
+import FilterConatiner from "./FilterContainer";
 
 const SearchContainer = () => {
   return (
@@ -10,6 +12,7 @@ const SearchContainer = () => {
       </div>
       <div className="search-area">
         <SearchInputComponent />
+        <FilterConatiner />
       </div>
     </S.SearchLayout>
   );

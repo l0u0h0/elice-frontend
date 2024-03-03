@@ -5,7 +5,6 @@ import * as S from "../../styles/search/search.style";
 const SearchInputComponent = () => {
   const [focus, setFocus] = useState<boolean>(false);
   const focusEvent = useCallback((onFocus: boolean) => {
-    console.log("setFocus");
     setFocus(onFocus);
   }, []);
 

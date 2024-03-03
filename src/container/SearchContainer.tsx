@@ -5,7 +5,9 @@ import SearchInputComponent from "../components/search/SearchInputComponent";
 const SearchContainer = () => {
   return (
     <S.SearchLayout>
-      <div className="title">과목</div>
+      <div className="title">
+        <p>과목</p>
+      </div>
       <div className="search-area">
         <SearchInputComponent />
       </div>

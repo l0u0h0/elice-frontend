@@ -11,6 +11,7 @@ import { courseAtom, filterAtom, offsetAtom } from "../jotai/course";
 import { useAtomValue, useSetAtom } from "jotai";
 // Service
 import { getCourseList } from "../services/ListService";
+import { courseInfoType } from "../types/data/courseData.types";
 
 const SearchContainer = () => {
   // 여기서 useSearchParams로 url query 관리
@@ -65,8 +66,19 @@ const SearchContainer = () => {
     })
       .then((res) => {
         if (res._result.status === "ok") {
-          console.log(res.courses);
-          setCourses({ courses: res.courses, count: res.course_count });
+          setCourses({
+            courses: res.courses.map((e: courseInfoType) => {
+              return {
+                title: e.title,
+                type: e.class_type === 0 ? "미설정" : `${e.class_type}`,
+                text: e.short_description,
+                image: e.image_file_url,
+                logo: e.logo_file_url,
+                price: e.price,
+              };
+            }),
+            count: res.course_count,
+          });
         }
       })
       .catch((error) => console.error(error));

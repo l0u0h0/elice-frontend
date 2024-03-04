@@ -7,7 +7,6 @@ import * as S from "../styles/search/filter.style";
 import { filterAtom } from "../jotai/course";
 
 const FilterConatiner = () => {
-  // 여기서도 필터 선택된 것에 따라 useSearchParams 관리
   const [filter, setFilter] = useAtom(filterAtom);
 
   return (

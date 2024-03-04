@@ -130,7 +130,8 @@ const SearchContainer = () => {
   return (
     <S.SearchLayout>
       <div className="title">
-        <p>과목</p>
+        <p className="selected">과목</p>
+        <p>패스</p>
       </div>
       <div className="search-area">
         <SearchInputComponent />

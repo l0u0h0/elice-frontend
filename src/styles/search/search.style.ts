@@ -10,9 +10,8 @@ export const SearchLayout = styled.div`
     width: 100%;
     height: auto;
     font-size: 1rem;
-    font-weight: 700;
     margin-bottom: 1rem;
-    color: #524fa1;
+    color: rgb(100, 100, 100);
     border-bottom: 0.5px solid gray;
     display: flex;
 
@@ -20,6 +19,11 @@ export const SearchLayout = styled.div`
       padding: 1rem;
       text-align: center;
       box-sizing: border-box;
+    }
+
+    & .selected {
+      font-weight: 700;
+      color: #524fa1;
       border-bottom: 3px solid #524fa1;
     }
   }

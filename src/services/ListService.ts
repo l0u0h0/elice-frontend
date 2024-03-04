@@ -1,6 +1,6 @@
 // type
 import axios from "axios";
-import { getCourseArgsType } from "../types/data/filterData.types";
+import { getCourseArgsType } from "../types/data/courseData.types";
 // Axios
 import instance from "./api";
 

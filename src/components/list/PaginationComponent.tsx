@@ -1,5 +1,6 @@
 // style
 import * as S from "../../styles/list/pagination.style";
+// type
 import { PaginationComponentProps } from "../../types/components/list.types";
 
 const PaginationComponent: React.FC<PaginationComponentProps> = ({

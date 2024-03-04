@@ -27,7 +27,7 @@ export const FilterLayout = styled.div`
   }
 `;
 
-export const FilterButton = styled.button`
+export const FilterButton = styled.button<{ $isSelected: boolean }>`
   min-width: 2rem;
   height: 2rem;
   margin: 0.5rem;
@@ -37,14 +37,16 @@ export const FilterButton = styled.button`
   align-items: center;
   font-size: 0.8rem;
   cursor: pointer;
-  background-color: rgb(240, 241, 243);
-  color: rgb(94, 95, 97);
+  background-color: ${(props) =>
+    props.$isSelected ? `#524FA1` : `rgb(240, 241, 243)`};
+  color: ${(props) => (props.$isSelected ? `white` : `rgb(94, 95, 97)`)};
   border: none;
   border-radius: 1.875rem;
   transition: all 0.25s;
 
   &:hover {
-    color: black;
-    background-color: rgb(225, 226, 228);
+    color: ${(props) => (props.$isSelected ? `white` : `black`)};
+    background-color: ${(props) =>
+      props.$isSelected ? `rgb(62, 50, 131)` : `rgb(225, 226, 228)`};
   }
 `;

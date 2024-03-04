@@ -1,4 +1,6 @@
-export type getCourseArgsType = {
-  filter_conditions: ReturnType<typeof JSON.stringify> | null;
-  offset: number;
+export type filterDataType = {
+  enroll_type: number;
+  is_free: boolean | null;
+  label: string;
+  isSelected: boolean;
 };

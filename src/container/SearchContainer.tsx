@@ -1,11 +1,14 @@
+// React
+import { useCallback, useEffect } from "react";
 // style
 import * as S from "../styles/search/search.style";
 // components
 import SearchInputComponent from "../components/search/SearchInputComponent";
 import FilterConatiner from "./FilterContainer";
+// Jotai
 import { courseAtom, filterAtom, offsetAtom } from "../jotai/course";
 import { useAtomValue, useSetAtom } from "jotai";
-import { useCallback, useEffect } from "react";
+// Service
 import { getCourseList } from "../services/ListService";
 
 const SearchContainer = () => {

@@ -34,7 +34,7 @@ const ListContainer = () => {
       // 5 페이지까지 나올 경우 => cur 값이 중앙에 위치할 필요 없음.
       if (courseList.count <= 100) {
         let cnt = 1;
-        for (let i = 0; i <= courseList.count; i += 20) {
+        for (let i = 0; i < courseList.count; i += 20) {
           list.push(cnt++);
         }
       } else {

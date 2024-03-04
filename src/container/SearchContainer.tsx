@@ -8,7 +8,7 @@ import SearchInputComponent from "../components/search/SearchInputComponent";
 import FilterConatiner from "./FilterContainer";
 // Jotai
 import { courseAtom, filterAtom, offsetAtom } from "../jotai/course";
-import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 // Service
 import { getCourseList } from "../services/ListService";
 // type
@@ -19,7 +19,7 @@ import {
 } from "../types/data/filterData.types";
 
 const SearchContainer = () => {
-  const page = useAtomValue(offsetAtom);
+  const [page, setPage] = useAtom(offsetAtom);
   const [filter, setFilter] = useAtom(filterAtom);
   const setCourses = useSetAtom(courseAtom);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -105,7 +105,15 @@ const SearchContainer = () => {
             }),
             count: res.course_count,
           });
+        } else {
+          throw new Error("서버로부터 응답 실패");
         }
+
+        if (res.courses.length === 0 && page > 0) {
+          // offset 초기화
+          setPage(0);
+        }
+
         window.scrollTo({
           top: 0,
           left: 0,

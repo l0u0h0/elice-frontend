@@ -57,7 +57,7 @@ const ListContainer = () => {
         }
       }
       setPrev(current > 0 ? true : false);
-      setNext(current < Math.floor(courseList.count / 20) ? true : false);
+      setNext(current < Math.floor(courseList.count / 20) - 1 ? true : false);
     }
 
     setPageList(list.length > 1 ? list : null);

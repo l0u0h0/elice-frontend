@@ -8,9 +8,9 @@ import * as S from "../styles/list/list.style";
 // components
 import ListCardComponent from "../components/list/ListCardComponent";
 import PaginationComponent from "../components/list/PaginationComponent";
+import NoResultComponent from "../components/common/NoResultComponent";
 // type
 import { courseListType } from "../types/data/courseData.types";
-import NoResultComponent from "../components/common/NoResultComponent";
 
 const ListContainer = () => {
   const [prev, setPrev] = useState<boolean>(false);

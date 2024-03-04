@@ -2,6 +2,7 @@
 import { useCallback, useState } from "react";
 // style
 import * as S from "../../styles/search/search.style";
+// type
 import { SearchInputComponentProps } from "../../types/components/filter.types";
 
 const SearchInputComponent: React.FC<SearchInputComponentProps> = ({

@@ -19,6 +19,7 @@ export const ListContainer = styled.div`
   height: 100%;
   margin: auto 0;
   display: flex;
+  gap: 1.75rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-start;
@@ -28,7 +29,6 @@ export const ListCardView = styled.div`
   width: calc(25% - 24px);
   min-width: 18rem;
   height: 24rem;
-  margin: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,6 +36,11 @@ export const ListCardView = styled.div`
   background-color: white;
   position: relative;
   cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    scale: 1.05;
+  }
 
   & .thumbnail-image {
     width: 100%;

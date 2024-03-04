@@ -17,6 +17,7 @@ import {
   filterDataType,
   filterParamsType,
 } from "../types/data/filterData.types";
+// hook
 import useDebounce from "../hooks/useDebounce";
 
 const SearchContainer = () => {

@@ -1,9 +1,9 @@
 // components
-import { useAtom } from "jotai";
 import FilterComponent from "../components/search/FilterComponent";
 // style
 import * as S from "../styles/search/filter.style";
 // Jotai
+import { useAtom } from "jotai";
 import { filterAtom } from "../jotai/course";
 
 const FilterConatiner = () => {

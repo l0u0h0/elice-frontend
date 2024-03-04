@@ -17,10 +17,12 @@ const ListCardComponent: React.FC<ListCardComponentProps> = ({
         <div className="thumbnail-image">
           <img src={image} alt="thumbnail-img" />
         </div>
-      ) : (
+      ) : logo ? (
         <div className="thumbnail-logo">
-          <img src={logo ? logo : "no-image"} alt="thumbnail-img" />
+          <img src={logo} alt="thumbnail-img" />
         </div>
+      ) : (
+        <div className="thumbnail-logo"></div>
       )}
       <div className="cardview-content">
         <div className="type">{type ? type : `미설정`}</div>
@@ -28,7 +30,11 @@ const ListCardComponent: React.FC<ListCardComponentProps> = ({
         <div className="content-text">{text}</div>
       </div>
       <div className="price">
-        <p>{price === "0" ? "무료" : price}</p>
+        <p>
+          {price === "0"
+            ? "무료"
+            : `${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`}
+        </p>
       </div>
     </S.ListCardView>
   );

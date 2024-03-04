@@ -17,6 +17,7 @@ export const ListLayout = styled.div`
 export const ListContainer = styled.div`
   width: 100%;
   height: 100%;
+  margin: auto 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -25,6 +26,7 @@ export const ListContainer = styled.div`
 
 export const ListCardView = styled.div`
   width: calc(25% - 24px);
+  min-width: 18rem;
   height: 24rem;
   margin: 0.5rem;
   display: flex;
@@ -92,7 +94,9 @@ export const ListCardView = styled.div`
     }
 
     & .content-text {
+      height: 4rem;
       color: #5e5f61;
+      overflow: hidden;
     }
   }
 

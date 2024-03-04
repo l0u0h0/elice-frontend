@@ -119,6 +119,11 @@ const SearchContainer = () => {
             count: res.course_count,
           });
         }
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
+        });
       })
       .catch((error) => console.error(error));
   }, [page, searchParams]);

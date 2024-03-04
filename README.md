@@ -17,9 +17,9 @@
 
 ### 프로젝트 구조
 
-```md
+```text
 📦src
-┣ 📂**tests**
+┣ 📂__tests__
 ┃ ┗ 📜Search.test.tsx
 ┣ 📂components
 ┃ ┣ 📂common

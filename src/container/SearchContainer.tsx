@@ -87,7 +87,7 @@ const SearchContainer = () => {
     getCourseList({
       filter_conditions: JSON.stringify({
         $and: [
-          { title: "%c언어%" },
+          { title: `%${searchParams.get("keyword")}%` },
           {
             $or: searchParams.getAll("price").map((e) => {
               if (e === "paid") {

@@ -10,6 +10,7 @@ import ListCardComponent from "../components/list/ListCardComponent";
 import PaginationComponent from "../components/list/PaginationComponent";
 // type
 import { courseListType } from "../types/data/courseData.types";
+import NoResultComponent from "../components/common/NoResultComponent";
 
 const ListContainer = () => {
   const [prev, setPrev] = useState<boolean>(false);
@@ -68,7 +69,7 @@ const ListContainer = () => {
 
   const listCount = courseList?.count;
 
-  return (
+  return courseList && courseList.count > 0 ? (
     <S.ListLayout>
       <div className="total-count">
         <p>전체 {listCount}개</p>
@@ -95,6 +96,8 @@ const ListContainer = () => {
         changePage={changePage}
       />
     </S.ListLayout>
+  ) : (
+    <NoResultComponent />
   );
 };
 

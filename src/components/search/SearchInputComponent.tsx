@@ -17,7 +17,6 @@ const SearchInputComponent: React.FC<SearchInputComponentProps> = ({
     <S.SearchInputLayout $focus={focus}>
       <img
         src={`${process.env.PUBLIC_URL}/images/search.svg`}
-        onClick={() => console.log("Searching !!!")}
         alt="Search Img"
       />
       <input

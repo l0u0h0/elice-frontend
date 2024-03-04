@@ -10,27 +10,29 @@ const FilterConatiner = () => {
   const [filter, setFilter] = useAtom(filterAtom);
 
   return (
-    <S.FilterLayout>
-      <div className="filter-row">
-        <div className="row-title">
-          <p>가격</p>
+    filter && (
+      <S.FilterLayout>
+        <div className="filter-row">
+          <div className="row-title">
+            <p>가격</p>
+          </div>
+          <div className="row-content">
+            {filter.map((e, i) => (
+              <FilterComponent
+                name={e.label}
+                isSelected={e.isSelected}
+                onClick={() => {
+                  const temp = [...filter];
+                  temp[i].isSelected = !e.isSelected;
+                  setFilter(temp);
+                }}
+                key={`Filter-btn-${i}`}
+              />
+            ))}
+          </div>
         </div>
-        <div className="row-content">
-          {filter.map((e, i) => (
-            <FilterComponent
-              name={e.label}
-              isSelected={e.isSelected}
-              onClick={() => {
-                const temp = [...filter];
-                temp[i].isSelected = !e.isSelected;
-                setFilter(temp);
-              }}
-              key={`Filter-btn-${i}`}
-            />
-          ))}
-        </div>
-      </div>
-    </S.FilterLayout>
+      </S.FilterLayout>
+    )
   );
 };
 

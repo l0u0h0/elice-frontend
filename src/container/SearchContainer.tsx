@@ -8,28 +8,52 @@ import SearchInputComponent from "../components/search/SearchInputComponent";
 import FilterConatiner from "./FilterContainer";
 // Jotai
 import { courseAtom, filterAtom, offsetAtom } from "../jotai/course";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 // Service
 import { getCourseList } from "../services/ListService";
+// type
 import { courseInfoType } from "../types/data/courseData.types";
+import {
+  filterDataType,
+  filterParamsType,
+} from "../types/data/filterData.types";
 
 const SearchContainer = () => {
-  // 여기서 useSearchParams로 url query 관리
   const page = useAtomValue(offsetAtom);
-  const filter = useAtomValue(filterAtom);
+  const [filter, setFilter] = useAtom(filterAtom);
   const setCourses = useSetAtom(courseAtom);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const setParams = useCallback(() => {
+    if (filter === null) {
+      const temp = [
+        { label: "무료", isSelected: false, enroll_type: 0, is_free: true },
+        { label: "유료", isSelected: false, enroll_type: 0, is_free: false },
+        { label: "구독", isSelected: false, enroll_type: 4, is_free: null },
+      ];
+      searchParams.getAll("price").forEach((e) => {
+        if (e === "paid") {
+          temp[temp.findIndex((v) => v.label === "유료")].isSelected = true;
+        } else if (e === "free") {
+          temp[temp.findIndex((v) => v.label === "무료")].isSelected = true;
+        } else {
+          temp[temp.findIndex((v) => v.label === "구독")].isSelected = true;
+        }
+      });
+
+      setFilter(temp.sort());
+      return;
+    }
+
     const curPriceType = filter
-      .filter((e) => e.isSelected)
-      .map((e) => {
+      .filter((e: filterDataType) => e.isSelected)
+      .map((e: filterDataType) => {
         return { enroll_type: e.enroll_type, is_free: e.is_free };
       });
 
     searchParams.forEach((_e, key) => searchParams.delete(key));
 
-    curPriceType.forEach((e) => {
+    curPriceType.forEach((e: filterParamsType) => {
       if (e.enroll_type === 0) {
         if (e.is_free) {
           searchParams.append("price", "free");

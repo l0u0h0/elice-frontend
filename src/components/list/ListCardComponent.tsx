@@ -8,23 +8,27 @@ const ListCardComponent: React.FC<ListCardComponentProps> = ({
   type,
   text,
   price,
-  thumbnail,
+  image,
+  logo,
 }) => {
   return (
     <S.ListCardView>
-      <div className="thumbnail">
-        <img
-          src={thumbnail ? thumbnail : process.env.REACT_APP_LOGO_URL}
-          alt="thumbnail-img"
-        />
-      </div>
+      {image ? (
+        <div className="thumbnail-image">
+          <img src={image} alt="thumbnail-img" />
+        </div>
+      ) : (
+        <div className="thumbnail-logo">
+          <img src={logo ? logo : "no-image"} alt="thumbnail-img" />
+        </div>
+      )}
       <div className="cardview-content">
         <div className="type">{type ? type : `미설정`}</div>
         <div className="title">{title}</div>
         <div className="content-text">{text}</div>
       </div>
       <div className="price">
-        <p>{price}</p>
+        <p>{price === "0" ? "무료" : price}</p>
       </div>
     </S.ListCardView>
   );

@@ -1,60 +1,41 @@
+// React
+import { useCallback, useEffect, useState } from "react";
+// Jotai
+import { useAtom } from "jotai";
+import { offsetAtom } from "../jotai/course";
 // style
+import * as S from "../styles/list/list.style";
+// components
 import ListCardComponent from "../components/list/ListCardComponent";
 import PaginationComponent from "../components/list/PaginationComponent";
-import * as S from "../styles/list/list.style";
+// dumidata
+import { data } from "../sample";
 
 const ListContainer = () => {
+  const [prev, setPrev] = useState<boolean>(false);
+  const [next, setNext] = useState<boolean>(false);
+  const [current, setCurrent] = useAtom<number>(offsetAtom);
+  const changePage = useCallback(
+    (offset: number) => {
+      setCurrent(offset);
+    },
+    [setCurrent]
+  );
+  useEffect(() => {
+    setPrev(current > 0 ? true : false);
+    setNext(current < 4 ? true : false);
+  }, [current]);
   const listCount = 284;
-  const list = [
-    {
-      title: "엘카데미 후기 게시판",
-      text: "rkddml rufwp wjs, gnrl tmfWJr qhrl",
-      price: "무료",
-      thumbnail:
-        "https://cdn-api.elice.io/api/file/7a34a8eff28e45eeae9c2e4dcc484dfc/%EC%8D%B8%EB%84%A4%EC%9D%BC.png?se=2024-03-14T00%3A15%3A00Z&sp=r&sv=2021-12-02&sr=b&sig=QbdE/OaWFOMzWvFww0YB0qXcumyOe/MCmEiUg00PJzI%3D",
-      type: null,
-    },
-    {
-      title: "엘카데미 후기 게시판",
-      text: "rkddml rufwp wjs, gnrl tmfWJr qhrl",
-      price: "무료",
-      thumbnail:
-        "https://cdn-api.elice.io/api/file/7a34a8eff28e45eeae9c2e4dcc484dfc/%EC%8D%B8%EB%84%A4%EC%9D%BC.png?se=2024-03-14T00%3A15%3A00Z&sp=r&sv=2021-12-02&sr=b&sig=QbdE/OaWFOMzWvFww0YB0qXcumyOe/MCmEiUg00PJzI%3D",
-      type: null,
-    },
-    {
-      title: "엘카데미 후기 게시판",
-      text: "rkddml rufwp wjs, gnrl tmfWJr qhrl",
-      price: "무료",
-      thumbnail:
-        "https://cdn-api.elice.io/api/file/7a34a8eff28e45eeae9c2e4dcc484dfc/%EC%8D%B8%EB%84%A4%EC%9D%BC.png?se=2024-03-14T00%3A15%3A00Z&sp=r&sv=2021-12-02&sr=b&sig=QbdE/OaWFOMzWvFww0YB0qXcumyOe/MCmEiUg00PJzI%3D",
-      type: null,
-    },
-    {
-      title: "엘카데미 후기 게시판",
-      text: "rkddml rufwp wjs, gnrl tmfWJr qhrl",
-      price: "무료",
-      thumbnail:
-        "https://cdn-api.elice.io/api/file/7a34a8eff28e45eeae9c2e4dcc484dfc/%EC%8D%B8%EB%84%A4%EC%9D%BC.png?se=2024-03-14T00%3A15%3A00Z&sp=r&sv=2021-12-02&sr=b&sig=QbdE/OaWFOMzWvFww0YB0qXcumyOe/MCmEiUg00PJzI%3D",
-      type: "웹",
-    },
-    {
-      title: "엘카데미 후기 게시판",
-      text: "rkddml rufwp wjs, gnrl tmfWJr qhrl",
-      price: "무료",
-      thumbnail:
-        "https://cdn-api.elice.io/api/file/7a34a8eff28e45eeae9c2e4dcc484dfc/%EC%8D%B8%EB%84%A4%EC%9D%BC.png?se=2024-03-14T00%3A15%3A00Z&sp=r&sv=2021-12-02&sr=b&sig=QbdE/OaWFOMzWvFww0YB0qXcumyOe/MCmEiUg00PJzI%3D",
-      type: null,
-    },
-    {
-      title: "엘카데미 후기 게시판",
-      text: "rkddml rufwp wjs, gnrl tmfWJr qhrl",
-      price: "0",
-      thumbnail:
-        "https://cdn-api.elice.io/api/file/7a34a8eff28e45eeae9c2e4dcc484dfc/%EC%8D%B8%EB%84%A4%EC%9D%BC.png?se=2024-03-14T00%3A15%3A00Z&sp=r&sv=2021-12-02&sr=b&sig=QbdE/OaWFOMzWvFww0YB0qXcumyOe/MCmEiUg00PJzI%3D",
-      type: null,
-    },
-  ];
+  const list = data.map((e) => {
+    return {
+      title: e.title,
+      type: e.class_type === 0 ? "미설정" : `${e.class_type}`,
+      text: e.short_description,
+      image: e.image_file_url,
+      logo: e.logo_file_url,
+      price: e.price,
+    };
+  });
 
   return (
     <S.ListLayout>
@@ -67,13 +48,19 @@ const ListContainer = () => {
             title={e.title}
             type={e.type}
             text={e.text}
-            thumbnail={e.thumbnail}
+            image={e.image}
+            logo={e.logo}
             price={e.price}
             key={`course-list-${i}`}
           />
         ))}
       </S.ListContainer>
-      <PaginationComponent />
+      <PaginationComponent
+        cur={current}
+        prev={prev}
+        next={next}
+        changePage={changePage}
+      />
     </S.ListLayout>
   );
 };

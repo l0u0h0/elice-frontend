@@ -3,5 +3,13 @@ export interface ListCardComponentProps {
   type: string | null;
   text: string;
   price: string;
-  thumbnail: string | null;
+  image: string | null;
+  logo: string | null;
+}
+
+export interface PaginationComponentProps {
+  prev: boolean;
+  next: boolean;
+  cur: number;
+  changePage: (offset: number) => void;
 }

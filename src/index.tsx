@@ -8,6 +8,8 @@ import GlobalStyles from "./styles/global.style";
 import reportWebVitals from "./reportWebVitals";
 // Component
 import CoursePage from "./pages/CoursePage";
+// Jotai
+import { Provider } from "jotai";
 
 // Routing 설정
 const router = createBrowserRouter([{ path: "/", element: <CoursePage /> }]);
@@ -17,10 +19,12 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <React.StrictMode>
-    <GlobalStyles />
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <Provider>
+    <React.StrictMode>
+      <GlobalStyles />
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </Provider>
 );
 
 reportWebVitals();

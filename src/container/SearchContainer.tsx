@@ -1,5 +1,5 @@
 // React
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 // style
 import * as S from "../styles/search/search.style";
@@ -17,26 +17,12 @@ import {
   filterDataType,
   filterParamsType,
 } from "../types/data/filterData.types";
-// hook
-import useDebounce from "../hooks/useDebounce";
 
 const SearchContainer = () => {
   const page = useAtomValue(offsetAtom);
   const [filter, setFilter] = useAtom(filterAtom);
   const setCourses = useSetAtom(courseAtom);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [keyword, setKeyword] = useState(searchParams.get("keyword"));
-
-  const debouncedKeyword = useDebounce((value: string) => {
-    if (value === "") searchParams.delete("keyword");
-    else searchParams.set("keyword", value);
-    setSearchParams(searchParams);
-  }, 1000);
-
-  const handleSearchKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setKeyword(e.target.value);
-    debouncedKeyword(e.target.value);
-  };
 
   const setParams = useCallback(() => {
     if (filter === null) {
@@ -139,10 +125,7 @@ const SearchContainer = () => {
         <p>과목</p>
       </div>
       <div className="search-area">
-        <SearchInputComponent
-          keyword={keyword}
-          onChange={handleSearchKeyword}
-        />
+        <SearchInputComponent />
         <FilterConatiner />
       </div>
     </S.SearchLayout>

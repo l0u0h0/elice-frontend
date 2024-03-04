@@ -10,7 +10,11 @@ const ListCardComponent: React.FC<ListCardComponentProps> = ({
   price,
   image,
   logo,
+  discount,
+  discount_rate,
 }) => {
+  const totalPrice = parseInt(discount) > 0 ? discount : price;
+
   return (
     <S.ListCardView>
       {image ? (
@@ -30,11 +34,25 @@ const ListCardComponent: React.FC<ListCardComponentProps> = ({
         <div className="content-text">{text}</div>
       </div>
       <div className="price">
-        <p>
-          {price === "0"
-            ? "무료"
-            : `${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`}
-        </p>
+        {discount_rate === null || Number(price) === Number(discount) ? (
+          totalPrice === "0" ? (
+            <p className="free">무료</p>
+          ) : (
+            <p className="paid">
+              ₩{totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </p>
+          )
+        ) : (
+          <div className="wrapper">
+            <p className="paid">
+              ₩{discount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </p>
+            <p className="origin-paid">
+              ₩{price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </p>
+            <p className="rate">{Number(discount_rate) * 100}%</p>
+          </div>
+        )}
       </div>
     </S.ListCardView>
   );

@@ -15,6 +15,8 @@ export type courseInfoType = {
   image_file_url: string;
   logo_file_url: string;
   price: string;
+  discounted_price: string;
+  discount_rate: string | null;
 };
 
 export type courseListType = {
@@ -24,4 +26,6 @@ export type courseListType = {
   image: string;
   logo: string;
   price: string;
+  discount: string;
+  discount_rate: string | null;
 };

@@ -84,6 +84,8 @@ const ListContainer = () => {
               image={e.image}
               logo={e.logo}
               price={e.price}
+              discount={e.discount}
+              discount_rate={e.discount_rate}
               key={`course-list-${i}`}
             />
           ))}

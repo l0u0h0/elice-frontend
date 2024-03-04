@@ -5,6 +5,8 @@ export interface ListCardComponentProps {
   price: string;
   image: string | null;
   logo: string | null;
+  discount: string;
+  discount_rate: string | null;
 }
 
 export interface PaginationComponentProps {

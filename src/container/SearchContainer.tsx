@@ -101,6 +101,8 @@ const SearchContainer = () => {
                 image: e.image_file_url,
                 logo: e.logo_file_url,
                 price: e.price,
+                discount: e.discounted_price,
+                discount_rate: e.discount_rate,
               };
             }),
             count: res.course_count,

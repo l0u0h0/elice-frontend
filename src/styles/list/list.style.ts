@@ -106,17 +106,38 @@ export const ListCardView = styled.div`
   }
 
   & .price {
-    width: 100%;
-    padding: 0 1.25rem;
+    width: calc(100% - 2.5rem);
+    height: auto;
+    margin: 0 1.25rem;
+    padding: 1.25rem 0;
     box-sizing: border-box;
     position: absolute;
     bottom: 0px;
+    border-top: 0.5px solid gray;
+
+    & .wrapper {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+
+      & .origin-paid {
+        font-size: smaller;
+        color: rgb(100, 100, 100);
+        text-decoration: line-through;
+      }
+
+      & .rate {
+        font-weight: 700;
+        color: red;
+      }
+    }
 
     & p {
-      padding: 1.25rem 0;
-      color: green;
       font-weight: 700;
-      border-top: 0.5px solid gray;
+    }
+
+    & .free {
+      color: green;
     }
   }
 `;

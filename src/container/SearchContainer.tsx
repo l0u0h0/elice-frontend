@@ -1,5 +1,5 @@
 // React
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 // style
 import * as S from "../styles/search/search.style";
@@ -17,12 +17,25 @@ import {
   filterDataType,
   filterParamsType,
 } from "../types/data/filterData.types";
+import useDebounce from "../hooks/useDebounce";
 
 const SearchContainer = () => {
   const page = useAtomValue(offsetAtom);
   const [filter, setFilter] = useAtom(filterAtom);
   const setCourses = useSetAtom(courseAtom);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [keyword, setKeyword] = useState(searchParams.get("keyword"));
+
+  const debouncedKeyword = useDebounce((value: string) => {
+    if (value === "") searchParams.delete("keyword");
+    else searchParams.set("keyword", value);
+    setSearchParams(searchParams);
+  }, 1000);
+
+  const handleSearchKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyword(e.target.value);
+    debouncedKeyword(e.target.value);
+  };
 
   const setParams = useCallback(() => {
     if (filter === null) {
@@ -51,7 +64,9 @@ const SearchContainer = () => {
         return { enroll_type: e.enroll_type, is_free: e.is_free };
       });
 
-    searchParams.forEach((_e, key) => searchParams.delete(key));
+    searchParams.forEach((_e, key) => {
+      if (key === "price") searchParams.delete(key);
+    });
 
     curPriceType.forEach((e: filterParamsType) => {
       if (e.enroll_type === 0) {
@@ -118,7 +133,10 @@ const SearchContainer = () => {
         <p>과목</p>
       </div>
       <div className="search-area">
-        <SearchInputComponent />
+        <SearchInputComponent
+          keyword={keyword}
+          onChange={handleSearchKeyword}
+        />
         <FilterConatiner />
       </div>
     </S.SearchLayout>

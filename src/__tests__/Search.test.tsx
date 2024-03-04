@@ -5,7 +5,14 @@ import userEvent from "@testing-library/user-event";
 
 describe("<SearchInput />", () => {
   test("Search input Testing", () => {
-    render(<SearchInputComponent />);
+    render(
+      <SearchInputComponent
+        keyword={null}
+        onChange={function (e: React.ChangeEvent<HTMLInputElement>): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+    );
 
     const input = screen.getByRole("textbox");
 

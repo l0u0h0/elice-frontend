@@ -11,5 +11,6 @@ export interface PaginationComponentProps {
   prev: boolean;
   next: boolean;
   cur: number;
+  pageList: number[] | null;
   changePage: (offset: number) => void;
 }

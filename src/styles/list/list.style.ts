@@ -24,7 +24,7 @@ export const ListContainer = styled.div`
 `;
 
 export const ListCardView = styled.div`
-  width: calc(25% - 1rem);
+  width: calc(25% - 24px);
   height: 24rem;
   margin: 0.5rem;
   display: flex;
@@ -35,8 +35,9 @@ export const ListCardView = styled.div`
   position: relative;
   cursor: pointer;
 
-  & .thumbnail {
+  & .thumbnail-image {
     width: 100%;
+    height: 145px;
     display: flex;
 
     & img {
@@ -48,6 +49,27 @@ export const ListCardView = styled.div`
       background-repeat: no-repeat;
       border-top-left-radius: 0.5rem;
       border-top-right-radius: 0.5rem;
+    }
+  }
+
+  & .thumbnail-logo {
+    width: 100%;
+    height: 145px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(58, 58, 76);
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+
+    & img {
+      width: 6.5rem;
+      height: 6.5rem;
+      display: inline-block;
+      background-color: rgb(58, 58, 76);
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   }
 

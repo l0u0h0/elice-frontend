@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
-// Styled
+// style
 import GlobalStyles from "./styles/global.style";
 // WebVitals
 import reportWebVitals from "./reportWebVitals";
@@ -13,7 +13,6 @@ import ErrorComponent from "./components/common/ErrorComponent";
 // Jotai
 import { Provider } from "jotai";
 
-// Routing 설정
 const router = createBrowserRouter([{ path: "/", element: <CoursePage /> }]);
 
 const root = ReactDOM.createRoot(

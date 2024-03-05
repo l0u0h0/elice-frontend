@@ -29,9 +29,7 @@ const ListContainer = () => {
   const setPage = useCallback(() => {
     const list: number[] | null = [];
 
-    // 20개 이하일 경우 페이지네이션이 필요 없음.
     if (courseList && courseList.count > 20) {
-      // 5 페이지까지 나올 경우 => cur 값이 중앙에 위치할 필요 없음.
       if (courseList.count <= 100) {
         let cnt = 1;
         for (let i = 0; i < courseList.count; i += 20) {

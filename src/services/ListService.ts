@@ -1,7 +1,7 @@
 // type
-import axios from "axios";
 import { getCourseArgsType } from "../types/data/courseData.types";
 // Axios
+import axios from "axios";
 import instance from "./api";
 
 const COURSE_URL = process.env.REACT_APP_COURSE_URL;
@@ -19,7 +19,7 @@ export const getCourseList = async (args: getCourseArgsType) => {
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      console.log(error.response);
+      throw new Error(`Axios 에러 : ${error.message}`);
     }
   }
 };

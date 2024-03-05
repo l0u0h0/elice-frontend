@@ -5,7 +5,7 @@ const ErrorComponent = ({ error, resetErrorBoundary }) => {
   return (
     <div>
       {error.message}
-      <img src={`https://http.cat/${error.status}`} alt="Miyaong" />
+      <img src={`https://http.cat/${error.status}`} alt="err img" />
       <button onClick={resetErrorBoundary}>{error.message} 발생</button>
     </div>
   );

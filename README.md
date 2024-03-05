@@ -4,6 +4,8 @@
 
 - 엘리스 기능 중 하나인 과목 검색의 간소화된 버전 구현
 
+---
+
 ### 개발 환경
 
 - React
@@ -14,6 +16,8 @@
 - ESLint, Prettier
 - React-Test-Library
 - react-error-boundary
+
+---
 
 ### 프로젝트 구조
 
@@ -76,6 +80,8 @@
 - **styles** : styled-components 컴포넌트 파일
 - **types** : 데이터 타입 및 인터페이스 명시 파일
 
+---
+
 ### 기능 구현
 
 - **Filter**
@@ -103,11 +109,19 @@
   - isAxiosError 메서드를 활용해 에러 분기처리
   - 검색 결과 없을 시 분기 처리 하여 검색 결과 없음을 알리는 컴포넌트 출력
 
+---
+
 ### 개발 화면
+
+- **페이지네이션 동작 화면**
 
 ![elice_pa_1.gif](./exec/elice_pa_1.gif)
 
+- **필터 및 검색어 동작 화면**
+
 ![elice_pa_2.gif](./exec/elice_pa_2.gif)
+
+---
 
 ### 기타
 

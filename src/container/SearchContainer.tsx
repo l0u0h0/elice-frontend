@@ -108,11 +108,10 @@ const SearchContainer = () => {
             count: res.course_count,
           });
         } else {
-          throw new Error("서버로부터 응답 실패");
+          throw new Error("잘못된 응답 수신 오류");
         }
 
         if (res.courses.length === 0 && page > 0) {
-          // offset 초기화
           setPage(0);
         }
 
@@ -122,7 +121,9 @@ const SearchContainer = () => {
           behavior: "smooth",
         });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        throw new Error("서버로부터 응답 오류");
+      });
   }, [page, searchParams]);
 
   useEffect(() => getList(), [getList]);

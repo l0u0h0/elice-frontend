@@ -18,6 +18,7 @@ const SearchInputComponent = () => {
   const debouncedKeyword = useDebounce((value: string) => {
     if (value === "") searchParams.delete("keyword");
     else searchParams.set("keyword", value);
+
     setSearchParams(searchParams);
   }, 1000);
 

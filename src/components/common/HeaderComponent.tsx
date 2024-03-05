@@ -2,11 +2,10 @@
 import * as S from "../../styles/common/header.style";
 
 const HeaderComponent = () => {
-  const logo = process.env.REACT_APP_LOGO_URL;
   return (
     <S.HeaderLayout>
       <S.LogoLink>
-        <img src={logo} alt="Elice Logo" />
+        <img src={process.env.REACT_APP_LOGO_URL} alt="Elice Logo" />
       </S.LogoLink>
     </S.HeaderLayout>
   );

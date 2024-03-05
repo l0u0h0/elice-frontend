@@ -36,8 +36,8 @@ const ListContainer = () => {
           list.push(cnt++);
         }
       } else {
-        let start = 0;
-        let end = 0;
+        let start = 0,
+          end = 0;
 
         if (current <= 2) {
           start = 1;
@@ -54,6 +54,7 @@ const ListContainer = () => {
           list.push(i);
         }
       }
+
       setPrev(current > 0 ? true : false);
       setNext(current < Math.floor(courseList.count / 20) - 1 ? true : false);
     }
@@ -61,16 +62,12 @@ const ListContainer = () => {
     setPageList(list.length > 1 ? list : null);
   }, [courseList, current]);
 
-  useEffect(() => {
-    setPage();
-  }, [setPage]);
-
-  const listCount = courseList?.count;
+  useEffect(() => setPage(), [setPage]);
 
   return courseList && courseList.count > 0 ? (
     <S.ListLayout>
       <div className="total-count">
-        <p>전체 {listCount}개</p>
+        <p>전체 {courseList.count}개</p>
       </div>
       <S.ListContainer>
         {courseList?.courses &&

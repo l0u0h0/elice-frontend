@@ -8,7 +8,7 @@ const useDebounce = (func: any, delay: number) => {
 
     timeout = setTimeout(() => {
       timeout = null;
-      func.apply(context, args as any);
+      func.apply(context, args);
     }, delay);
   };
 };

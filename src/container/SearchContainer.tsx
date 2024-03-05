@@ -26,22 +26,23 @@ const SearchContainer = () => {
 
   const setParams = useCallback(() => {
     if (filter === null) {
-      const temp = [
+      const origin = [
         { label: "무료", isSelected: false, enroll_type: 0, is_free: true },
         { label: "유료", isSelected: false, enroll_type: 0, is_free: false },
         { label: "구독", isSelected: false, enroll_type: 4, is_free: null },
       ];
+
       searchParams.getAll("price").forEach((e) => {
         if (e === "paid") {
-          temp[temp.findIndex((v) => v.label === "유료")].isSelected = true;
+          origin[origin.findIndex((v) => v.label === "유료")].isSelected = true;
         } else if (e === "free") {
-          temp[temp.findIndex((v) => v.label === "무료")].isSelected = true;
+          origin[origin.findIndex((v) => v.label === "무료")].isSelected = true;
         } else {
-          temp[temp.findIndex((v) => v.label === "구독")].isSelected = true;
+          origin[origin.findIndex((v) => v.label === "구독")].isSelected = true;
         }
       });
 
-      setFilter(temp.sort());
+      setFilter(origin.sort());
       return;
     }
 
@@ -56,15 +57,10 @@ const SearchContainer = () => {
     });
 
     curPriceType.forEach((e: filterParamsType) => {
-      if (e.enroll_type === 0) {
-        if (e.is_free) {
-          searchParams.append("price", "free");
-        } else {
-          searchParams.append("price", "paid");
-        }
-      } else {
-        searchParams.append("price", "subscribe");
-      }
+      searchParams.append(
+        "price",
+        e.enroll_type === 0 ? (e.is_free ? "free" : "paid") : "subscribe"
+      );
     });
 
     setSearchParams(searchParams);
@@ -108,7 +104,7 @@ const SearchContainer = () => {
             count: res.course_count,
           });
         } else {
-          throw new Error("잘못된 응답 수신 오류");
+          throw new Error(`잘못된 응답 상태 오류 : ${res._result.reason}`);
         }
 
         if (res.courses.length === 0 && page > 0) {
@@ -122,7 +118,7 @@ const SearchContainer = () => {
         });
       })
       .catch((error) => {
-        throw new Error("서버로부터 응답 오류");
+        throw new Error(`서버로부터 응답 오류 : ${error.message}`);
       });
   }, [page, searchParams]);
 
